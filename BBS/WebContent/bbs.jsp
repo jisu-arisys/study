@@ -126,16 +126,15 @@
 			<% 
 				if(pageNum != 1){
 			%>
-<%-- 				<a href="bbs.jsp?pageNum=<%= pageNum - 1 %>" class="btn btn-success btn-arrow-left">before</a>
- --%>				<a href="bbs.jsp?pageNum=1" class="btn btn-success btn-arrow-left">before</a>
+ 				<a href="bbs.jsp?pageNum=<%= pageNum - 1 %>" class="btn btn-success btn-arrow-left">before</a>
 			<%
 				}
 				if(bbsDAO.nextPage(pageNum+1)){
 					
 			%> 
-				<a href="bbs.jsp?pageNum=<%= pageNum + 1 %>" class="btn btn-success btn-arrow-">after</a>
+				<a href="bbs.jsp?pageNum=<%= pageNum + 1 %>" class="btn btn-success btn-arrow-left">after</a>
 			<%
-				}
+				} 
 			%>
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>

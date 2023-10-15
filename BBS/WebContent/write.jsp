@@ -16,7 +16,7 @@
 		}
 		
 	%>
-<!-- 		현재페이지 이동 버튼에 class="active"-->
+<!-- 		현재페이지 이동 버튼에 class="active"--> 
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"

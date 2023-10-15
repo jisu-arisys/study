@@ -15,8 +15,7 @@
 		String userID = null;
 		if(session.getAttribute("userID")!=null){
 			userID = (String) session.getAttribute("userID");			
-		}
-		
+		} 
 	%>
 <!-- 		현재페이지 이동 버튼에 class="active"-->
 	<nav class="navbar navbar-default">

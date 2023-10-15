@@ -14,7 +14,7 @@
 	<%	
 		//기존 로그인 정보 불러오기
 		String userID = null;
-		if(session.getAttribute("userID")!=null){
+		if(session.getAttribute("userID")!=null){ 
 			userID = (String) session.getAttribute("userID");			
 		}
 		
