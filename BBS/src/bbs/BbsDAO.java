@@ -114,7 +114,29 @@ public class BbsDAO extends Connecting{
 		
 		return list;
 	}
-	
+	public Boolean nextPage(int pageNum){
+		String sql = "Select * from bbs where bbsId < ? And bbsAvailable = 1";
+		
+		//2page 11 -(1*5) = 6
+		//1page 11 - (0*5) = 11 ~ limit 5
+		
+		int load = getNext() - (pageNum -1)*10;
+		
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, load);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				return true;
+			}
+			
+		} catch (Exception e) {
+		}
+		
+		return false;
+	}
 	
 	
 	

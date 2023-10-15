@@ -23,6 +23,20 @@ public class Test {
 		for(int i = 0; i < list.size(); i++){
 			System.out.println(list.get(i).toString());
 		}
+		
+		int pageNum =1;
+		System.out.println("pageNum =" + pageNum);
+	
+		if(bbsDAO.nextPage(pageNum + 1)){
+			System.out.println("다음");
+			pageNum=2;
+			System.out.println("pageNum =" + pageNum);
+		}
+	
+		if(pageNum !=1){
+			System.out.println("pageNum =" + pageNum);
+			System.out.println("이전");
+			
+		}
 	}
-
 }
