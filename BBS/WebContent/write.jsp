@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,14 +9,14 @@
 </head>
 <<body>
 	<%	
-		//ê¸°ì¡´ ë¡œê·¸ì¸ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
+		//±âÁ¸ ·Î±×ÀÎ Á¤º¸ ºÒ·¯¿À±â
 		String userID = null;
 		if(session.getAttribute("userID")!=null){
 			userID = (String) session.getAttribute("userID");			
 		}
 		
 	%>
-<!-- 		í˜„ìž¬íŽ˜ì´ì§€ ì´ë™ ë²„íŠ¼ì— class="active"-->
+<!-- 		ÇöÀçÆäÀÌÁö ÀÌµ¿ ¹öÆ°¿¡ class="active"-->
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -26,15 +26,15 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>				
 			</button>
-			<a class="navbar-brand" href="main.jsp">JSP ê²Œì‹œíŒ ì›¹ ì‚¬ì´íŠ¸</a>
+			<a class="navbar-brand" href="main.jsp">JSP °Ô½ÃÆÇ À¥ »çÀÌÆ®</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">ë©”ì¸</a></li>
-				<li><a href="bbs.jsp">ê²Œì‹œíŒ</a></li>
-				<li class="active"><a href="write.jsp">ê¸€ì“°ê¸°</a></li>
+				<li><a href="main.jsp">¸ÞÀÎ</a></li>
+				<li><a href="bbs.jsp">°Ô½ÃÆÇ</a></li>
+				<li class="active"><a href="write.jsp">±Û¾²±â</a></li>
 			</ul>
-			<%	//ë¡œê·¸ì¸ ì•ˆëœ ìƒíƒœ
+			<%	//·Î±×ÀÎ ¾ÈµÈ »óÅÂ
 				if(userID == null){
 			%>
 			<ul class="nav navbar-nav navbar-right">
@@ -42,15 +42,15 @@
 					<a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" 
 						aria-haspopup="true" aria-expanded="false">
-						ì ‘ì†í•˜ê¸° <span class="caret"></span>
+						Á¢¼ÓÇÏ±â <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="login.jsp">ë¡œê·¸ì¸</a></li>
-						<li><a href="join.jsp">íšŒì›ê°€ìž…</a></li>
+						<li><a href="login.jsp">·Î±×ÀÎ</a></li>
+						<li><a href="join.jsp">È¸¿ø°¡ÀÔ</a></li>
 					</ul>
 				</li>
 			</ul>
-			<% //ë¡œê·¸ì¸ëœ ìƒíƒœ
+			<% //·Î±×ÀÎµÈ »óÅÂ
 				} else {
 			%>
 			<ul class="nav navbar-nav navbar-right">
@@ -59,11 +59,11 @@
 							data-toggle="dropdown" role="button" 
 							aria-haspopup="true"
 							aria-expanded="false">
-							íšŒì›ê´€ë¦¬
+							È¸¿ø°ü¸®
 							<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">ë¡œê·¸ì•„ì›ƒ</a></li>
+						<li><a href="logoutAction.jsp">·Î±×¾Æ¿ô</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -73,7 +73,7 @@
 		</div>
 	</nav>
 	
-		<h3 style="text-align : center;">ê¸€ì“°ê¸° í™”ë©´</h3>
+		<h3 style="text-align : center;">±Û¾²±â È­¸é</h3>
 	
 	
 	<div class="container">
@@ -82,19 +82,19 @@
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 					<thead>
 						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">ê²Œì‹œíŒ ê¸€ì“°ê¸° ì–‘ì‹</th>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">°Ô½ÃÆÇ ±Û¾²±â ¾ç½Ä</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" class="form-control" placeholder="ì œëª©" name="bbsTitle" maxlength="50"></td>
+							<td><input type="text" class="form-control" placeholder="Á¦¸ñ" name="bbsTitle" maxlength="50"></td>
 						</tr>				
 						<tr>
-							<td><textarea class="form-control" placeholder="ë‚´ìš©" name="bbsContent" maxlength="2048"></textarea></td>
-						</tr>	
+							<td><textarea class="form-control" placeholder="³»¿ë" name="bbsContent" maxlength="2048"></textarea></td>
+						</tr>				
 					</tbody>
 				</table>
-				<input type="submit" class="btn btn=primary pull-right" value="ê¸€ì“°ê¸°">
+				<input type="submit" class="btn btn=primary pull-right" value="±Û¾²±â">
 			</form>
 		</div>
 	</div>

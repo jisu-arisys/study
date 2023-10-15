@@ -70,6 +70,7 @@ local.properties
 ### Java ###
 # Compiled class file
 *.class
+.classpath
 
 # Log file
 *.log
@@ -101,7 +102,7 @@ replay_pid*
 *.htm
 *.html
 *.js
-*.jsp
+# *.jsp
 *.php
 *.rss
 *.wasm
