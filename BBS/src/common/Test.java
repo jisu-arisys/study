@@ -12,31 +12,30 @@ public class Test {
 	public static void main(String[] args) {
 		BbsDAO bbsDAO = new BbsDAO();
 		
-		ArrayList<Bbs> list = bbsDAO.getList(1);
+		int pageNum =1;
+		System.out.println("pageNum =" + pageNum);
+		
+		ArrayList<Bbs> list = bbsDAO.getList(pageNum);
 		
 		for(Bbs bbs : list){
 			
-			System.out.println(bbs.toString());
-			
+//			System.out.println(bbs.toString());
 		}
-		
-		for(int i = 0; i < list.size(); i++){
-			System.out.println(list.get(i).toString());
-		}
-		
-		int pageNum =1;
-		System.out.println("pageNum =" + pageNum);
 	
 		if(bbsDAO.nextPage(pageNum + 1)){
 			System.out.println("다음");
 			pageNum=2;
 			System.out.println("pageNum =" + pageNum);
 		}
+		
+		list = bbsDAO.getList(pageNum);
+		for(int i = 0; i < list.size(); i++){
+			System.out.println(list.get(i).toString());
+		}
 	
 		if(pageNum !=1){
 			System.out.println("pageNum =" + pageNum);
 			System.out.println("이전");
-			
 		}
 	}
 }
