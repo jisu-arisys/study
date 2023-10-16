@@ -32,6 +32,15 @@
 		//게시글 불러오기
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
 		
+		//
+		if(bbs != null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('예상치 않은 오류입니다.')");
+			script.println("lacation.href = 'bbs.jsp'");
+			script.println("</script>");
+		}
+		
 	%>
 <!-- 		현재페이지 이동 버튼에 class="active"--> 
 	<nav class="navbar navbar-default">
@@ -103,7 +112,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td style="width: 20%">글 제목</td>
+						<td style="width:20%;">글 제목</td>
 						<td colspan ="2"><%= bbs.getBbsTitle() %></td>
 					</tr>
 					<tr>
@@ -116,7 +125,7 @@
 					</tr>			
 					<tr>
 						<td>내용</td>
-						<td colspan ="2" style="min-height: 200px; text-align: left"><%=bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","$lt").replaceAll(">","gt").replaceAll("\n","<br>") %></td>
+						<td colspan ="2" style="min-height: 200px; text-align: left"><%= bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","&lt").replaceAll(">","&gt").replaceAll("\n","<br>") %></td>
 					</tr>			
 				</tbody>
 			</table>

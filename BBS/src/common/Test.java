@@ -37,5 +37,10 @@ public class Test {
 			System.out.println("pageNum =" + pageNum);
 			System.out.println("이전");
 		}
+		
+		Bbs bbs = bbsDAO.getBbs(14);
+		
+		System.out.println(bbs.toString());
+		
 	}
 }

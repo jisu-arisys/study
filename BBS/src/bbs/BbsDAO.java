@@ -139,7 +139,7 @@ public class BbsDAO extends Connecting{
 	}
 	
 	public Bbs getBbs(int bbsID) {
-		String sql = "Select * form bbs where bbsID = ?";
+		String sql = "Select * From bbs where bbsID = ?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -183,7 +183,7 @@ public class BbsDAO extends Connecting{
 		
 	}
 	
-	public int delete(int bbsID) {
+	public int deleteAction(int bbsID) {
 		
 		String sql ="Update bbs Set Available = 0 Where bbsID = ? )";
 		
