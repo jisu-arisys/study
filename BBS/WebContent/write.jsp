@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+    pageEncoding="UTF-8"%>
+<!DOCTYPE ht<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
@@ -9,14 +8,22 @@
 </head>
 <<body>
 	<%	
-		//±âÁ¸ ·Î±×ÀÎ Á¤º¸ ºÒ·¯¿À±â
+		//ê¸°ì¡´ ë¡œê·¸ì¸ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
 		String userID = null;
 		if(session.getAttribute("userID")!=null){
 			userID = (String) session.getAttribute("userID");			
 		}
 		
+		if(userID == null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('ë¡œê·¸ì¸ì´ ì•ˆë˜ì–´ ìžˆìŠµë‹ˆë‹¤. ë¡œê·¸ì¸ íŽ˜ì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.')");
+			script.println("lacation.href = 'login.jsp'");
+			script.println("</script>");
+		}
+		
 	%>
-<!-- 		ÇöÀçÆäÀÌÁö ÀÌµ¿ ¹öÆ°¿¡ class="active"--> 
+<!-- 		í˜„ìž¬íŽ˜ì´ì§€ ì´ë™ ë²„íŠ¼ì— class="active"--> 
 	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -26,54 +33,34 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>				
 			</button>
-			<a class="navbar-brand" href="main.jsp">JSP °Ô½ÃÆÇ À¥ »çÀÌÆ®</a>
+			<a class="navbar-brand" href="main.jsp">JSP ê²Œì‹œíŒ ì›¹ ì‚¬ì´íŠ¸</a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="main.jsp">¸ÞÀÎ</a></li>
-				<li><a href="bbs.jsp">°Ô½ÃÆÇ</a></li>
-				<li class="active"><a href="write.jsp">±Û¾²±â</a></li>
+				<li><a href="main.jsp">ë©”ì¸</a></li>
+				<li><a href="bbs.jsp">ê²Œì‹œíŒ</a></li>
+				<li class="active"><a href="write.jsp">ê¸€ì“°ê¸°</a></li>
 			</ul>
-			<%	//·Î±×ÀÎ ¾ÈµÈ »óÅÂ
-				if(userID == null){
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" 
-						aria-haspopup="true" aria-expanded="false">
-						Á¢¼ÓÇÏ±â <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="login.jsp">·Î±×ÀÎ</a></li>
-						<li><a href="join.jsp">È¸¿ø°¡ÀÔ</a></li>
-					</ul>
-				</li>
-			</ul>
-			<% //·Î±×ÀÎµÈ »óÅÂ
-				} else {
-			%>
+			
+			<%-- í•­ìƒ ë¡œê·¸ì¸ëœ ìƒíƒœ --%>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" 
 							aria-haspopup="true"
 							aria-expanded="false">
-							È¸¿ø°ü¸®
+							íšŒì›ê´€ë¦¬
 							<span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="logoutAction.jsp">·Î±×¾Æ¿ô</a></li>
+						<li><a href="logoutAction.jsp">ë¡œê·¸ì•„ì›ƒ</a></li>
 					</ul>
 				</li>
 			</ul>
-			<%
-				}
-			%>
 		</div>
 	</nav>
 	
-		<h3 style="text-align : center;">±Û¾²±â È­¸é</h3>
+		<h3 style="text-align : center;">ê¸€ì“°ê¸° í™”ë©´</h3>
 	
 	
 	<div class="container">
@@ -82,19 +69,19 @@
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 					<thead>
 						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">°Ô½ÃÆÇ ±Û¾²±â ¾ç½Ä</th>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">ê²Œì‹œíŒ ê¸€ì“°ê¸° ì–‘ì‹</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" class="form-control" placeholder="Á¦¸ñ" name="bbsTitle" maxlength="50"></td>
+							<td><input type="text" class="form-control" placeholder="ì œëª©" name="bbsTitle" maxlength="50"></td>
 						</tr>				
 						<tr>
-							<td><textarea class="form-control" placeholder="³»¿ë" name="bbsContent" maxlength="2048"></textarea></td>
+							<td><textarea class="form-control" placeholder="ë‚´ìš©" name="bbsContent" maxlength="2048"></textarea></td>
 						</tr>				
 					</tbody>
 				</table>
-				<input type="submit" class="btn btn=primary pull-right" value="±Û¾²±â">
+				<input type="submit" class="btn btn=primary pull-right" value="ê¸€ì“°ê¸°">
 			</form>
 		</div>
 	</div>

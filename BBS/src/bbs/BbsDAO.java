@@ -183,6 +183,27 @@ public class BbsDAO extends Connecting{
 		
 	}
 	
+	public int delete(int bbsID) {
+		
+		String sql ="Update bbs Set Available = 0 Where bbsID = ? )";
+		
+		try {
+			com.mysql.jdbc.PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,bbsID);
+			
+			if(pstmt.executeUpdate() > 0) {
+				return DatabaseSuccess;
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return DatabaseError;
+		
+	}
+	
 	
 
 }

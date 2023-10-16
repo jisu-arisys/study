@@ -18,6 +18,14 @@
 			userID = (String) session.getAttribute("userID");			
 		}
 		
+		if(userID == null){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('로그인이 안되어 있습니다. 로그인 페이지로 이동합니다.')");
+			script.println("lacation.href = 'login.jsp'");
+			script.println("</script>");
+		}
+		
 		//게시글 번호 확인
 		int bbsID = 0;		
 		if(request.getParmeter("bbsID")!=null){
@@ -103,7 +111,7 @@
 						</tr>				
 					</tbody>
 				</table>
-				<input type="submit" class="btn btn=primary pull-right" value="수정">
+				<input type="submit" class="btn btn=primary pull-right" value="글수정">
 			</form>
 		</div>
 	</div>
