@@ -1,4 +1,4 @@
-package bbs;
+fpackage bbs;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -138,7 +138,50 @@ public class BbsDAO extends Connecting{
 		return false;
 	}
 	
+	public Bbs getBbs(int bbsID) {
+		String sql = "Select * form bbs where bbsID = ?";
+		
+		try {
+			com.mysql.jdbc.PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bbsID);
+			rs = pstmt.excuteQuery();
+			
+			if(rs.next()) {
+				return new Bbs(rs.getInt(1), rs.getString(2), rs.getString(3), 
+						rs.getTimestamp(4), rs.getString(5), rs.getInt(6));			
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		return null;
+	}
 	
+	public int updateAction(int bbsID, String bbsTitle, String bbsContent){
+		
+		String sql ="Update bbs Set bbsTitle = ? And bbsContent = ? Where bbsID = ? )";
+		
+		try {
+			com.mysql.jdbc.PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,bbsTitle);
+			pstmt.setString(2,bbsContent);
+			pstmt.setInt(3,bbsID);
+			
+			if(pstmt.executeUpdate() > 0) {
+				return DatabaseSuccess;
+			}
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return DatabaseError;
+		
+	}
 	
 	
 
