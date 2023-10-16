@@ -27,7 +27,7 @@
 
 		//게시글 번호 확인
 		int bbsID = 0;		
-		if(request.getParmeter("bbsID")!=null){
+		if(request.getParameter("bbsID")!=null){
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		}
 		if(bbsID == 0 ){	

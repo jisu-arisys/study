@@ -3,14 +3,13 @@
 <%@ page import="java.io.PrintWriter" %>  
 <%@ page import="bbs.Bbs" %>			
 <%@ page import="bbs.BbsDAO" %>			
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="bootstrap_v3.3/css/bootstrap.css"><title>Insert title here</title>
 </head>
-<<body>
+<body>
 	<%	
 		//기존 로그인 정보 불러오기
 		String userID = null;
@@ -28,7 +27,7 @@
 		
 		//게시글 번호 확인
 		int bbsID = 0;		
-		if(request.getParmeter("bbsID")!=null){
+		if(request.getParameter("bbsID")!=null){
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		}
 		if(bbsID == 0 ){	

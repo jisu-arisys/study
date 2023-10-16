@@ -19,8 +19,7 @@ public class Test {
 		
 		for(Bbs bbs : list){
 			
-			System.out.println(bbs.toString());
-		}
+			System.out.println(bbs.toString());		}
 	
 		if(bbsDAO.nextPage(pageNum + 1)){
 			System.out.println("다음");
