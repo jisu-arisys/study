@@ -162,7 +162,7 @@ public class BbsDAO extends Connecting{
 	
 	public int updateAction(int bbsID, String bbsTitle, String bbsContent){
 		
-		String sql ="Update bbs Set bbsTitle = ? And bbsContent = ? Where bbsID = ? )";
+		String sql ="Update bbs Set bbsTitle = ?, bbsContent = ? Where bbsID = ? ";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

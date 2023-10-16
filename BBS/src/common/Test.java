@@ -37,9 +37,13 @@ public class Test {
 			System.out.println("이전");
 		}
 		
-		Bbs bbs = bbsDAO.getBbs(14);
+		Bbs bbs = bbsDAO.getBbs(11);
 		
 		System.out.println(bbs.toString());
+		
+		int row = bbsDAO.updateAction(9, "update1", "update1");
+		
+		System.out.println(row);
 		
 	}
 }

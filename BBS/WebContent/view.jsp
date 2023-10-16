@@ -6,6 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width", initial-scale="1">
+<link rel="stylesheet" href="bootstrap_v3.3/css/bootstrap.css">
 <title>JSP bbs</title>
 </head>
 <body>
@@ -31,15 +34,6 @@
 		
 		//게시글 불러오기
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
-		
-		//
-		if(bbs != null){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('예상치 않은 오류입니다.')");
-			script.println("lacation.href = 'bbs.jsp'");
-			script.println("</script>");
-		}
 		
 	%>
 <!-- 		현재페이지 이동 버튼에 class="active"--> 
@@ -101,7 +95,6 @@
 	
 		<h3 style="text-align : center;">글쓰기 화면</h3>
 	
-	
 	<div class="container">
 		<div class="row">
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
@@ -129,13 +122,13 @@
 					</tr>			
 				</tbody>
 			</table>
-			<a href="bbs.jsp" class="btn btn=primary ">목록</a>
+			<a href="bbs.jsp" class="btn btn-primary ">목록</a>
 			
 			<% 
 				if(userID != null && userID.equals(bbs.getUserID())){
 					
 			%>
-			<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn=primary ">수정</a>
+			<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn-primary ">수정</a>
 			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary ">삭제</a>
 			<%			
 				}

@@ -106,11 +106,11 @@
 						</tr>				
 						<tr>
 							<td><textarea class="form-control" placeholder="내용" name="bbsContent" maxlength="2048"
-							value="<%= bbs.getBbsContent()%>"></textarea></td>
+							><%= bbs.getBbsContent().replaceAll(" ","&nbsp;").replaceAll("<","&lt").replaceAll(">","&gt").replaceAll("\n","<br>") %></textarea></td>
 						</tr>				
 					</tbody>
 				</table>
-				<input type="submit" class="btn btn=primary pull-right" value="글수정">
+				<input type="submit" class="btn btn-primary pull-right" value="글수정">
 			</form>
 		</div>
 	</div>
