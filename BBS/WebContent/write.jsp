@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE ht<html>
-<head>
+<%@ page import="java.io.PrintWriter" %>
+<!DOCTYPE html>
+<html>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="bootstrap_v3.3/css/bootstrap.css"><title>Insert title here</title>

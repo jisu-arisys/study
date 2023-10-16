@@ -142,9 +142,9 @@ public class BbsDAO extends Connecting{
 		String sql = "Select * form bbs where bbsID = ?";
 		
 		try {
-			com.mysql.jdbc.PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bbsID);
-			rs = pstmt.excuteQuery();
+			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				return new Bbs(rs.getInt(1), rs.getString(2), rs.getString(3), 
@@ -165,7 +165,7 @@ public class BbsDAO extends Connecting{
 		String sql ="Update bbs Set bbsTitle = ? And bbsContent = ? Where bbsID = ? )";
 		
 		try {
-			com.mysql.jdbc.PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,bbsTitle);
 			pstmt.setString(2,bbsContent);
 			pstmt.setInt(3,bbsID);
@@ -188,7 +188,7 @@ public class BbsDAO extends Connecting{
 		String sql ="Update bbs Set Available = 0 Where bbsID = ? )";
 		
 		try {
-			com.mysql.jdbc.PreparedStatement pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,bbsID);
 			
 			if(pstmt.executeUpdate() > 0) {

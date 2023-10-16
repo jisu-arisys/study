@@ -37,6 +37,8 @@
 			script.println("lacation.href = 'bbs.jsp'");
 			script.println("</script>");
 		}
+		//게시글 불러오기
+		Bbs bbs = new BbsDAO().getBbs(bbsID);
 		
 		//작성자 확인
 		if(!userID.equals(bbs.getUserID())){

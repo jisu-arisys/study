@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="bbs.Bbs" %>
 <%@ page import="bbs.BbsDAO" %>
-<!DOCTYPE ht<html>
+<!DOCTYPE html>
+<html>
 <head>
 <title>JSP bbs</title>
 </head>
-<<body>
+<body>
 	<%	
 		//기존 로그인 정보 불러오기
 		String userID = null;
@@ -15,8 +16,8 @@
 			userID = (String) session.getAttribute("userID");			
 		}
 		//게시글 번호 확인
-		int bbsID = 0;		
-		if(request.getParmeter("bbsID")!=null){
+		int bbsID = 0;
+		if(request.getParameter("bbsID")!=null){
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
 		}
 		
@@ -28,17 +29,8 @@
 			script.println("</script>");
 		}
 		
-		//게시글 불러오기ㅇ
+		//게시글 불러오기
 		Bbs bbs = new BbsDAO().getBbs(bbsID);
-		
-		//작성자 확인 x
-		if(!userID.equals(bbs.getUserID())){
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('권한이 없습니다.')");
-			script.println("lacation.href = 'bbs.jsp'");
-			script.println("</script>");
-		}
 		
 	%>
 <!-- 		현재페이지 이동 버튼에 class="active"--> 
@@ -135,11 +127,11 @@
 					
 			%>
 			<a href="update.jsp?bbsID=<%= bbsID %>" class="btn btn=primary ">수정</a>
-			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%=d bbsID %>" class="btn btn=primary ">삭제</a>
+			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?bbsID=<%= bbsID %>" class="btn btn-primary ">삭제</a>
 			<%			
 				}
 			%>
-			<input type="submit" class="btn btn=primary pull-right" value="글쓰기">
+			<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
 		</div>
 	</div>
 
