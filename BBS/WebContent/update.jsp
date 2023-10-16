@@ -19,18 +19,29 @@
 		}
 		
 		//게시글 번호 확인
-		int bbsID = 0;
+		int bbsID = 0;		
 		if(request.getParmeter("bbsID")!=null){
 			bbsID = Integer.parseInt(request.getParameter("bbsID"));
-			
-				PrintWriter script = response.getWriter();
-				script.println("<script>");
-				script.println("alert('로그인이 안되어 있습니다. 로그인 페이지로 이동합니다.')");
-				script.println("lacation.href = 'login.jsp'");
-				script.println("</script>");
-			}
+		}
+		if(bbsID == 0 ){	
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('유효하지 않은 글입니다.')");
+			script.println("lacation.href = 'bbs.jsp'");
+			script.println("</script>");
+		}
 		
+		//게시글 불러오기
+		Bbs bbs = new BbsDAO().getBbs(bbsID);
 		
+		//작성자 확인
+		if(!userID.equals(bbs.getUserID())){
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('권한이 없습니다.')");
+			script.println("lacation.href = 'bbs.jsp'");
+			script.println("</script>");
+		}
 	%>
 <!-- 		현재페이지 이동 버튼에 class="active"--> 
 	<nav class="navbar navbar-default">
@@ -48,27 +59,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
 				<li><a href="bbs.jsp">게시판</a></li>
-				<li class="active"><a href="write.jsp">글쓰기</a></li>
+				<li class="active"><a href="write.jsp">수정</a></li>
 			</ul>
-			<%	//로그인 안된 상태
-				if(userID == null){
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" 
-						aria-haspopup="true" aria-expanded="false">
-						접속하기 <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="login.jsp">로그인</a></li>
-						<li><a href="join.jsp">회원가입</a></li>
-					</ul>
-				</li>
-			</ul>
-			<% //로그인된 상태
-				} else {
-			%>
+			
+			<!--항상 로그인된 상태  -->
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"
@@ -83,34 +77,33 @@
 					</ul>
 				</li>
 			</ul>
-			<%
-				}
-			%>
 		</div>
 	</nav>
 	
-		<h3 style="text-align : center;">글쓰기 화면</h3>
+		<h3 style="text-align : center;">수정 화면</h3>
 	
 	
 	<div class="container">
 		<div class="row">
-			<form method="post" action="writeAction.jsp">
+			<form method="post" action="updateAction.jsp?bbsID=<%= bbsID %>">
 				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;">
 					<thead>
 						<tr>
-							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기 양식</th>
+							<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글수정 양식</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" class="form-control" placeholder="제목" name="bbsTitle" maxlength="50"></td>
+							<td><input type="text" class="form-control" placeholder="제목" name="bbsTitle" maxlength="50"
+							value="<%= bbs.getBbsTitle()%>"></td>
 						</tr>				
 						<tr>
-							<td><textarea class="form-control" placeholder="내용" name="bbsContent" maxlength="2048"></textarea></td>
+							<td><textarea class="form-control" placeholder="내용" name="bbsContent" maxlength="2048"
+							value="<%= bbs.getBbsContent()%>"></textarea></td>
 						</tr>				
 					</tbody>
 				</table>
-				<input type="submit" class="btn btn=primary pull-right" value="글쓰기">
+				<input type="submit" class="btn btn=primary pull-right" value="수정">
 			</form>
 		</div>
 	</div>

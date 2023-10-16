@@ -1,10 +1,10 @@
 
 package common;
 
-import java.util.ArrayList;
-
 import bbs.Bbs;
 import bbs.BbsDAO;
+
+import java.util.ArrayList;
 
 public class Test {
 	

@@ -1,4 +1,4 @@
-fpackage bbs;
+package bbs;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
