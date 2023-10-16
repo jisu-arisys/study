@@ -184,8 +184,8 @@ public class BbsDAO extends Connecting{
 	}
 	
 	public int deleteAction(int bbsID) {
-		
-		String sql ="Update bbs Set Available = 0 Where bbsID = ? )";
+//		String test="Update bbs Set bbsAvailable = 0 Where bbsID =14;";
+		String sql ="Update bbs Set bbsAvailable = 0 Where bbsID = ?";
 		
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

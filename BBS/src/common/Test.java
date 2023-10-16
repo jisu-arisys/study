@@ -45,5 +45,8 @@ public class Test {
 		
 		System.out.println(row);
 		
+		row = bbsDAO.deleteAction(14);
+		
+		System.out.println(row);
 	}
 }
