@@ -26,3 +26,8 @@ linkStyle 1,2 stroke:blue;
 linkStyle 0 stroke:red;
 linkStyle 3,4,5,6,7 stroke:green;
 ```
+
+
+```code
+text
+```
