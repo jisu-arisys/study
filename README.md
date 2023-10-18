@@ -2,9 +2,12 @@
 buchun-study
 
 
-<H1> testMermaid</H1>
+<H1> 구조 </H1>
 
 ```mermaid
+---
+title: eugene-cti-extension
+---
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
 flowchart LR
 ivr(IVR)
