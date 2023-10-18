@@ -31,3 +31,8 @@ linkStyle 3,4,5,6,7 stroke:green;
 ```code
 text
 ```
+
+인라인 code
+`code`
+
+
