@@ -2,7 +2,7 @@
 buchun-study
 
 
-H1 testMermaid
+<H1> testMermaid</H1>
 ```mermaid
 %%{init: {"flowchart": {"htmlLabels": false}} }%%
 flowchart LR
