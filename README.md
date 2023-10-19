@@ -2,7 +2,7 @@
 buchun-study
 
 
-<H1> 구조 </H1>
+<H1> test </H1>
 
 ```mermaid
 ---
